@@ -1,0 +1,27 @@
+classDiagram
+    class Produto {
+        +Long id
+        +String nome
+        +Double preco
+    }
+
+    class Venda {
+        +Long id
+        +Double valor
+        +Status status
+    }
+
+    class VendaProduto {
+        +Long id
+        +Integer quantidade
+    }
+
+    class Status {
+        <<enumeration>>
+        +RECEBIDO
+        +PENDENTE
+    }
+
+    Produto "1" --o "0..*" VendaProduto : contém
+    Venda "1" --o "0..*" VendaProduto : possui
+    Venda "1" --|> Status : tem
