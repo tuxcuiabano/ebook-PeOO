@@ -9,6 +9,7 @@ classDiagram
         +Long id
         +Double valor
         +Status status
+        +List~VendaProduto~ vendaProdutos
     }
 
     class VendaProduto {
