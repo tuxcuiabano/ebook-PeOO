@@ -1,5 +1,9 @@
 HELP.md
+<<<<<<< HEAD
+../target/
+=======
 target/
+>>>>>>> main
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
