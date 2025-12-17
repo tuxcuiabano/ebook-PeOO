@@ -1,0 +1,8 @@
+docker run --name mysql-despensa \
+  -e MYSQL_ROOT_PASSWORD=senha123 \
+  -e MYSQL_DATABASE=despensa_db \
+  -e MYSQL_USER=despensa_user \
+  -e MYSQL_PASSWORD=despensa_pass \
+  -p 3306:3306 \
+  -v mysql-data:/var/lib/mysql \
+  -d mysql:8.0
