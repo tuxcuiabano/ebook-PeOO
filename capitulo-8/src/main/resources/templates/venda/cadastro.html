@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Novo Pedido - Restaurante do Dito</title>
+    <link rel="stylesheet" th:href="@{/produto/produtos.css}">
+</head>
+<body>
+
+<h1 style="text-align: center;">Registrar Novo Pedido</h1>
+
+<div class="comanda-box">
+    <form th:action="@{/vendas/salvar}" th:object="${venda}" method="post">
+
+        <h3>Item do Pedido</h3>
+
+        <div>
+            <label>Prato:</label>
+            <select th:field="*{itens[0].produtoId}" required style="width: 100%; padding: 8px;">
+                <option value="">Selecione um prato...</option>
+
+                <option th:each="p : ${produtos}"
+                        th:value="${p.id}"
+                        th:text="${p.nome} + ' (R$ ' + ${p.preco} + ')'">
+                </option>
+            </select>
+
+            <span class="erro-msg"
+                  th:if="${#fields.hasErrors('itens[0].produtoId')}"
+                  th:errors="*{itens[0].produtoId}"></span>
+        </div>
+
+        <br>
+
+        <div>
+            <label>Quantidade:</label>
+            <input type="number"
+                   th:field="*{itens[0].quantidade}"
+                   min="1" value="1"
+                   style="width: 100px; padding: 8px;" required/>
+
+            <span class="erro-msg"
+                  th:if="${#fields.hasErrors('itens[0].quantidade')}"
+                  th:errors="*{itens[0].quantidade}"></span>
+        </div>
+
+        <br><hr><br>
+
+        <div style="text-align: right;">
+            <a th:href="@{/vendas}" style="margin-right: 15px; text-decoration: none; color: #555;">Cancelar</a>
+            <button type="submit" style="padding: 10px 20px; cursor: pointer; background-color: #4CAF50; color: white; border: none;">Fechar Conta</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
