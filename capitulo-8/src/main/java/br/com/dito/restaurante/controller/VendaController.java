@@ -24,10 +24,9 @@ public class VendaController {
     @Autowired
     private ProdutoService produtoService;
 
-    // A TELA DE LISTAGEM (O CAIXA)
+
     @GetMapping("/vendas")
     public String listar(Model model) {
-        // Busca todas as vendas com seus detalhes
         model.addAttribute("vendas", vendaService.listarTodas());
         return "venda/lista";
     }
